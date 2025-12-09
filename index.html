@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untukmu yang Istimewa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            color: #5a3d5c;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            animation: floatText 3s ease-in-out infinite;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            animation: float 5s infinite ease-in-out;
+        }
+        
+        .content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .message-box {
+            background-color: #fff9fb;
+            border-left: 5px solid #ff7eb3;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 700px;
+            animation: slideIn 1.2s ease-out;
+        }
+        
+        .message-box h2 {
+            color: #ff758c;
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+        }
+        
+        .message-box p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .message-box .highlight {
+            color: #ff758c;
+            font-weight: 500;
+        }
+        
+        .photo-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        
+        .photo-frame {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid #ff7eb3;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .photo-frame::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 2px dashed #ff7eb3;
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-love {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+        }
+        
+        .btn-love:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 118, 140, 0.4);
+        }
+        
+        .btn-special {
+            background: white;
+            color: #ff758c;
+            border: 2px solid #ff758c;
+        }
+        
+        .btn-special:hover {
+            background: #ff758c;
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff0f5;
+            color: #9d7b9e;
+            font-size: 0.9rem;
+            border-top: 1px solid #ffddee;
+        }
+        
+        .hidden-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-out;
+            background-color: #fff9fb;
+            border-radius: 10px;
+            margin-top: 20px;
+            padding: 0 25px;
+        }
+        
+        .hidden-message.show {
+            max-height: 500px;
+            padding: 25px;
+        }
+        
+        .hidden-message h3 {
+            color: #ff758c;
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .message-box h2 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .message-box {
+                padding: 20px;
+            }
+            
+            .photo-frame {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Untukmu yang Istimewa</h1>
+            <p>Sebuah pesan kecil dengan harapan besar untuk membuatmu tersenyum</p>
+            <p>JIUN 😂😂😂</p>
+            
+            <!-- Floating hearts -->
+            <div class="heart" style="top: 20px; left: 10%; animation-delay: 0s;">❤</div>
+            <div class="heart" style="top: 40px; right: 15%; animation-delay: 1s;">❤</div>
+            <div class="heart" style="bottom: 30px; left: 20%; animation-delay: 2s;">❤</div>
+            <div class="heart" style="bottom: 20px; right: 10%; animation-delay: 3s;">❤</div>
+        </div>
+        
+        <div class="content">
+            <div class="photo-section">
+                <div class="photo-frame">
+                    <!-- Ganti URL gambar dengan foto orang yang dimaksud -->
+                    <img src="15september.jpg" alt="Foto istimewa">
+                </div>
+            </div>
+            
+            <div class="message-box">
+                <h2>Halo cantik...</h2>
+                <p>Setiap kali aku memikirkanmu, rasanya dunia ini menjadi tempat yang lebih indah. Kamu membawa begitu banyak <span class="highlight">kebahagiaan, tawa, dan makna</span> ke dalam hidupku.</p>
+                <p>Tak peduli seberapa sibuk atau sulitnya hariku, satu pikiran tentangmu selalu bisa membuatku tersenyum. Aku bersyukur bisa mengenalmu lebih dekat dan melihat betapa menakjubkannya dirimu.</p>
+                <p>Kamu adalah seseorang yang <span class="highlight">spesial, kuat, dan penuh kehangatan</span>. Aku harap kamu selalu tahu betapa berharganya dirimu.</p>
+            </div>
+            
+            <!-- <div class="action-buttons">
+                <button class="btn btn-love" id="showMessage">
+                    <i class="fas fa-heart"></i> Klik untuk Pesan Spesial
+                </button>
+                <button class="btn btn-special" id="surpriseBtn">
+                    <i class="fas fa-star"></i> Kejutan Kecil
+                </button>
+            </div> -->
+            
+            <div class="hidden-message" id="hiddenMessage">
+                <h3>Hanya untukmu...</h3>
+                <p>Aku mungkin tidak selalu tahu kata-kata yang tepat untuk diucapkan, tapi aku ingin kamu tahu bahwa aku sangat menikmati setiap momen yang kita habiskan bersama.</p>
+                <p>Terima kasih telah menjadi dirimu sendiri - seseorang yang begitu menarik, cerdas, dan membuatku merasa nyaman menjadi diriku sendiri.</p>
+                <p>Aku berharap kita bisa terus saling mengenal lebih dalam, berbagi lebih banyak cerita, tawa, dan mungkin... petualangan kecil bersama.</p>
+                <p>Dengan senyuman hangat,<br><span style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #ff758c;">Orang yang sedang berusaha mengenalmu</span></p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Dibuat dengan ❤️ | Pesan ini khusus untukmu dan hanya untukmu. By. initial_haa</p>
+        </div>
+    </div>
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const showMessageBtn = document.getElementById('showMessage');
+            const surpriseBtn = document.getElementById('surpriseBtn');
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            const heartsContainer = document.querySelector('.header');
+            
+            // Show hidden message
+            showMessageBtn.addEventListener('click', function() {
+                hiddenMessage.classList.toggle('show');
+                
+                if (hiddenMessage.classList.contains('show')) {
+                    this.innerHTML = '<i class="fas fa-heart"></i> Tutup Pesan Spesial';
+                    // Add heart animation
+                    this.style.animation = 'heartBeat 0.8s';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 800);
+                } else {
+                    this.innerHTML = '<i class="fas fa-heart"></i> Klik untuk Pesan Spesial';
+                }
+            });
+            
+            // Surprise button
+            surpriseBtn.addEventListener('click', function() {
+                // Create floating hearts
+                for (let i = 0; i < 15; i++) {
+                    createFloatingHeart();
+                }
+                
+                // Change button text temporarily
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-smile-wink"></i> Kamu spesial!';
+                this.style.animation = 'heartBeat 0.8s';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.animation = '';
+                }, 2000);
+                
+                // Play a subtle sound if available (optional)
+                playHeartSound();
+            });
+            
+            // Create floating hearts
+            function createFloatingHeart() {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.style.position = 'fixed';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                heart.style.color = '#ff7eb3';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '100vh';
+                heart.style.zIndex = '9999';
+                heart.style.pointerEvents = 'none';
+                heart.style.opacity = '0.8';
+                
+                document.body.appendChild(heart);
+                
+                // Animate heart
+                const animation = heart.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 0.8 },
+                    { transform: `translateY(-${Math.random() * 300 + 200}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 2000,
+                    easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                });
+                
+                // Remove heart after animation
+                animation.onfinish = () => {
+                    heart.remove();
+                };
+            }
+            
+            // Function to play heart sound (optional)
+            function playHeartSound() {
+                // This is a simple beep sound using Web Audio API
+                try {
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.value = 523.25; // C5 note
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.5);
+                } catch (e) {
+                    // Audio not supported or user blocked it
+                    console.log("Audio tidak didukung di browser ini");
+                }
+            }
+            
+            // Add some initial floating hearts
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 500);
+            }
+        });
+    </script> -->
+</body>
+</html>
